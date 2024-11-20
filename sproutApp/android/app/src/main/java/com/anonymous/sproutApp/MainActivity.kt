@@ -1,4 +1,4 @@
-package com.sproutapp
+package com.anonymous.sproutApp
 
 import android.os.Build
 import android.os.Bundle

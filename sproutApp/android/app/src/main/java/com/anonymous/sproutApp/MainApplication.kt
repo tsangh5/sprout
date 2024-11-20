@@ -1,4 +1,4 @@
-package com.sproutapp
+package com.anonymous.sproutApp
 
 import android.app.Application
 import android.content.res.Configuration

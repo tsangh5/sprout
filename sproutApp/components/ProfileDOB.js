@@ -1,37 +1,53 @@
-import React from "react";
-import { View, Text } from "react-native";
-import DateTimePicker from "@react-native-community/datetimepicker";
-import { StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Button, StyleSheet } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 const ProfileDOB = ({ dob, setDob }) => {
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(true);
+
+  const showDatePicker = () => setDatePickerVisibility(true);
+  const hideDatePicker = () => setDatePickerVisibility(false);
+
+  const handleConfirm = (date) => {
+    setDob(date);
+    hideDatePicker();
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Enter Your Date of Birth</Text>
-      <DateTimePicker
-        value={dob}
+      <Text style={styles.selectedDate}>
+        Selected Date: {dob ? dob.toDateString() : "None"}
+      </Text>
+      <Button title="Pick a Date" onPress={showDatePicker} />
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
         mode="date"
-        display="default"
-        onChange={(event, selectedDate) => {
-          const currentDate = selectedDate || dob;
-          setDob(currentDate);
-        }}
+        display="inline"
+        date={dob || new Date()}
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
       />
-      <Text style={styles.inputPreview}>Selected Date: {dob.toDateString()}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
   },
   title: {
+    color: "black",
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
   },
-  inputPreview: {
-    marginTop: 10,
+  selectedDate: {
+    marginVertical: 20,
+    fontSize: 16,
     fontStyle: "italic",
   },
 });
