@@ -2,39 +2,56 @@ import React, { useState, useRef } from "react";
 import {
   View,
   Text,
-  Button,
+  TouchableOpacity,
   Animated,
   StyleSheet,
-  TouchableOpacity,
 } from "react-native";
+import ProfileDOB from "../components/ProfileDOB";
+import ProfileEdu from "../components/ProfileEdu";
+import ProfileHobbies from "../components/ProfileHobbies";
 
 const ProfileSetup = () => {
-  const [currentStage, setCurrentStage] = useState(0); // Tracks the current stage (0, 1, or 2)
-  const translateX = useRef(new Animated.Value(0)).current; // For sliding animation
+  const [currentStage, setCurrentStage] = useState(0); // Track current stage
+  const translateX = useRef(new Animated.Value(0)).current; // Animation value
 
-  const stages = ["Stage 1", "Stage 2", "Stage 3"];
+  // State for each stage's data
+  const [dob, setDob] = useState(new Date());
+  const [educationLevel, setEducationLevel] = useState("");
+  const [major, setMajor] = useState("");
+  const [hobbies, setHobbies] = useState("");
+  const [clubs, setClubs] = useState("");
 
+  const stages = [ProfileDOB, ProfileEdu, ProfileHobbies];
+
+  // Handle navigation to the next stage
   const handleContinue = () => {
-    if (currentStage < 2) {
-      setCurrentStage((prev) => prev + 1);
+    if (currentStage < stages.length - 1) {
       Animated.timing(translateX, {
-        toValue: -(currentStage + 1) * 300, // Adjust for screen width
+        toValue: -300, // Adjust based on screen width
         duration: 300,
         useNativeDriver: true,
-      }).start();
+      }).start(() => {
+        setCurrentStage((prev) => prev + 1);
+        translateX.setValue(0); // Reset animation position
+      });
     }
   };
 
+  // Handle navigation to the previous stage
   const handleBack = () => {
     if (currentStage > 0) {
-      setCurrentStage((prev) => prev - 1);
       Animated.timing(translateX, {
-        toValue: -(currentStage - 1) * 300, // Adjust for screen width
+        toValue: 300, // Adjust based on screen width
         duration: 300,
         useNativeDriver: true,
-      }).start();
+      }).start(() => {
+        setCurrentStage((prev) => prev - 1);
+        translateX.setValue(0); // Reset animation position
+      });
     }
   };
+
+  const CurrentStageComponent = stages[currentStage];
 
   return (
     <View style={styles.container}>
@@ -51,18 +68,25 @@ const ProfileSetup = () => {
         ))}
       </View>
 
-      {/* Sliding Screens */}
+      {/* Animated Stage */}
       <Animated.View
         style={[
-          styles.slidingContainer,
+          styles.stageContainer,
           { transform: [{ translateX }] },
         ]}
       >
-        {stages.map((stage, index) => (
-          <View key={index} style={styles.stage}>
-            <Text>{stage}</Text>
-          </View>
-        ))}
+        <CurrentStageComponent
+          dob={dob}
+          setDob={setDob}
+          educationLevel={educationLevel}
+          setEducationLevel={setEducationLevel}
+          major={major}
+          setMajor={setMajor}
+          hobbies={hobbies}
+          setHobbies={setHobbies}
+          clubs={clubs}
+          setClubs={setClubs}
+        />
       </Animated.View>
 
       {/* Navigation Buttons */}
@@ -72,9 +96,17 @@ const ProfileSetup = () => {
             <Text style={styles.buttonText}>Back</Text>
           </TouchableOpacity>
         )}
-        {currentStage < 2 && (
+        {currentStage < stages.length - 1 && (
           <TouchableOpacity style={styles.button} onPress={handleContinue}>
             <Text style={styles.buttonText}>Continue</Text>
+          </TouchableOpacity>
+        )}
+        {currentStage === stages.length - 1 && (
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => alert("Profile Complete!")}
+          >
+            <Text style={styles.buttonText}>Finish</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -98,14 +130,10 @@ const styles = StyleSheet.create({
     height: 5,
     marginHorizontal: 5,
   },
-  slidingContainer: {
-    flexDirection: "row",
-    width: 900, // Adjust to the total width of the stages
-  },
-  stage: {
-    width: 300, // Adjust for screen width
-    justifyContent: "center",
+  stageContainer: {
+    width: 300, // Adjust to screen width
     alignItems: "center",
+    justifyContent: "center",
   },
   buttonContainer: {
     flexDirection: "row",
