@@ -3,6 +3,11 @@
     "name": "sproutApp",
     "slug": "sproutApp",
     "version": "1.0.0",
-    "newArchEnabled": true
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/image.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    }
   }
 }
