@@ -27,7 +27,7 @@ const ProfileDOB = ({ dob, setDob }) => {
         date={dob || new Date()}
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
-      />
+       />
     </View>
   );
 };
