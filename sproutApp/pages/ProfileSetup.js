@@ -54,6 +54,8 @@ const ProfileSetup = () => {
   const CurrentStageComponent = stages[currentStage];
 
   return (
+    <>
+    <Text style={styles.title}> Profile </Text>
     <View style={styles.container}>
       {/* Stage Indicator */}
       <View style={styles.stageIndicator}>
@@ -62,7 +64,7 @@ const ProfileSetup = () => {
             key={index}
             style={[
               styles.stageLine,
-              { backgroundColor: currentStage >= index ? "green" : "gray" },
+              { backgroundColor: currentStage >= index ?  "#51B664" : "#8D8787" },
             ]}
           />
         ))}
@@ -111,14 +113,22 @@ const ProfileSetup = () => {
         )}
       </View>
     </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  title: {
+    marginTop: 50,
+    marginHorizontal: 20,
+    position: "flex-start",
+    alignContent:"flex-start",
+    fontSize: 48,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     padding: 20,
   },
   stageIndicator: {
@@ -127,13 +137,13 @@ const styles = StyleSheet.create({
   },
   stageLine: {
     flex: 1,
-    height: 5,
-    marginHorizontal: 5,
+    height: 3,
+    marginHorizontal: 12,
   },
   stageContainer: {
     width: 300, // Adjust to screen width
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: "flex-start",
+    justifyContent: "flext-start",
   },
   buttonContainer: {
     flexDirection: "row",
@@ -148,7 +158,8 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "bold",
-  },  
+  },
+  
 });
 
 export default ProfileSetup;
