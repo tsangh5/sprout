@@ -146,18 +146,27 @@ const styles = StyleSheet.create({
     justifyContent: "flext-start",
   },
   buttonContainer: {
-    flexDirection: "row",
-    marginTop: 20,
+    flexDirection: "column",
+    marginTop: 10,
+    justifyContent: "center", // Centers the buttons horizontally
+    alignItems: "center",
   },
   button: {
-    backgroundColor: "#007BFF",
+    width: 290,
+    height: 52,
+    backgroundColor: "#51B664",
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 50,
     marginHorizontal: 10,
+    justifyContent: "center", // Center text vertically
+    alignItems: "center",
+    marginBottom: 10,
   },
   buttonText: {
     color: "white",
     fontWeight: "bold",
+    textAlign: "center",
+    textAlignVertical: "center"
   },
   
 });
