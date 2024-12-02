@@ -1,36 +1,40 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Calendar } from "react-native-calendars";
-import CalendarIcon from "../assets/calendarIcon";
+import DatePicker from 'react-native-modern-datepicker';
 
 const ProfileDOB = ({ dob, setDob }) => {
-    const [selected, setSelected] = useState("");
+    const [selectedDate, setSelectedDate] = useState(dob ? dob.toISOString().split('T')[0] : '2020-02-01');
+
+    const handleChange = (propDate) => {
+        setSelectedDate(propDate);
+    };
+    const today = new Date();
+    const todayString = today.toISOString().split('T')[0];
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Enter Your Date of Birth</Text>
             <Text style={styles.date}>Date</Text>
             <View style={styles.selectedDate}>
-                <Text style={styles.dateString}>{dob ? dob.dateString : "Select Date"}</Text>
-                <CalendarIcon />
+                <Text style={styles.dateString}>{selectedDate || "Select Date"}</Text>
             </View>
-            <View>
-                <Calendar
-                    initialDate="2000-01-01"
-                    style={styles.calendar}
-                    theme={{
-                        calendarBackground: "#D9D9D9",
-                        selectedDayBackgroundColor: "#51B664",
-                        selectedDayTextColor: "white",
-                        todayTextColor: "#51B664",
+            <View style={styles.calendar}>
+                <DatePicker
+                    mode="calendar"
+                    selected={selectedDate}
+                    onDateChange={handleChange}
+                    style={styles.datePicker}
+                    current = {todayString}
+                    options={{
+                        backgroundColor: "#D9D9D9",
+                        selectedColor: "#51B664",
+                        selectedTextColor: "white",
+                        textHeaderColor: "black",
+                        textMonthFontWeight: "bold",
+                        textDayFontSize: 16,
+                        textDayFontWeight: "bold",
                         arrowColor: "#51B664",
-                    }}
-                    onDayPress={(day) => {
-                        setDob(day);
-                        setSelected(day.dateString); // Update selected date
-                    }}
-                    markedDates={{
-                        [selected]: { selected: true, selectedColor: "#51B664", selectedTextColor: "white" },
+                        mainColor: "#51B664",
                     }}
                 />
             </View>
@@ -43,6 +47,7 @@ const styles = StyleSheet.create({
         display: "flex",
         width: "100%",
         padding: 20,
+        flex: 1,
     },
     title: {
         fontSize: 20,
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
     },
     selectedDate: {
         fontSize: 12,
-        color: "#51B664",
+        color: "black",
         borderColor: "#51B664",
         borderWidth: 3,
         flexDirection: "row",
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
     },
     dateString: {
         fontSize: 15,
-        color: "#51B664",
+        color: "black",
         marginLeft: 20,
         flex: 0.95,
     },
@@ -69,17 +74,18 @@ const styles = StyleSheet.create({
         marginTop: 10,
         color: "#51B664",
     },
-    calendarIcon: {
-        width: 24,
-        height: 24,
-    },
     calendar: {
-        padding: 20,
         marginTop: 20,
         borderRadius: 16,
+        fontSize: 20,
+        justifyContent: 'center',
+    },
+    datePicker: {
         backgroundColor: "#D9D9D9",
-        width: 312,
-        height: 400,
+        borderRadius: 16,
+        width: 320,
+        fontSize: 20,
+        height: 355,
     },
 });
 

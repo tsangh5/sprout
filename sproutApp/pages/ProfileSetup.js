@@ -28,7 +28,7 @@ const ProfileSetup = () => {
     if (currentStage < stages.length - 1) {
       Animated.timing(translateX, {
         toValue: -300, // Adjust based on screen width
-        duration: 300,
+        duration: 250,
         useNativeDriver: true,
       }).start(() => {
         setCurrentStage((prev) => prev + 1);
@@ -141,9 +141,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
   stageContainer: {
-    width: 300, // Adjust to screen width
+    flex: 1, // Takes available space above buttons
+    width: "100%",
     alignItems: "flex-start",
-    justifyContent: "flext-start",
   },
   buttonContainer: {
     flexDirection: "column",
