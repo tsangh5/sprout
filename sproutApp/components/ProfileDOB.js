@@ -1,13 +1,19 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, LogBox } from "react-native";
 import DatePicker from 'react-native-modern-datepicker';
 
-const ProfileDOB = ({ dob, setDob }) => {
+const ProfileDOB = ({ dob = new Date(), setDob }) => {  // Using default parameter for dob
+    useEffect(() => {
+        LogBox.ignoreLogs([
+            'Warning: DatePicker: Support for defaultProps will be removed from function components in a future major release', 'Warning: Header: Support for defaultProps will be removed from function components in a future major release'
+        ]);
+    }, []);
     const [selectedDate, setSelectedDate] = useState(dob ? dob.toISOString().split('T')[0] : '2020-02-01');
 
     const handleChange = (propDate) => {
         setSelectedDate(propDate);
     };
+
     const today = new Date();
     const todayString = today.toISOString().split('T')[0];
 
@@ -24,7 +30,7 @@ const ProfileDOB = ({ dob, setDob }) => {
                     selected={selectedDate}
                     onDateChange={handleChange}
                     style={styles.datePicker}
-                    current = {todayString}
+                    current={todayString}
                     options={{
                         backgroundColor: "#D9D9D9",
                         selectedColor: "#51B664",
