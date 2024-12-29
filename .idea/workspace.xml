@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a005f70-b242-443e-8ce8-616fae2722eb" name="Changes" comment="" />
+    <list default="true" id="4a005f70-b242-443e-8ce8-616fae2722eb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/sproutApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sproutApp/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +31,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/benjamintsang/sprout",
     "node.js.detected.package.eslint": "true",
@@ -58,6 +61,7 @@
       <updated>1732759231994</updated>
       <workItem from="1732759233772" duration="19000" />
       <workItem from="1733119391990" duration="4495000" />
+      <workItem from="1735195220793" duration="4000" />
     </task>
     <servers />
   </component>
