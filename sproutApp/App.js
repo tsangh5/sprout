@@ -14,6 +14,7 @@ import ExplorePage from './pages/explorePage'
 import MatchesPage from './pages/matchesPage'
 import ProfilePage from './pages/profilePage'
 import ChatsPage from './pages/chatsPage'
+import NavHeader from './components/NavHeader'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 
@@ -60,8 +61,11 @@ function AppTabs() {
   return (
       <Tab.Navigator
           screenOptions={{
-            tabBarStyle: { backgroundColor: '#fff' },
-            headerShown: false,
+              tabBarStyle: { backgroundColor: '#fff' },
+              headerShown: false,
+              header: ({ navigation, route, options }) => {
+                  return <MyHeader title={title} style={options.headerStyle} />;
+              };
           }}
       >
         <Tab.Screen name="swipePage" component={SwipePage} />
