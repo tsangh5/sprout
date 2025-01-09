@@ -4,13 +4,10 @@ import { View, Image, TouchableOpacity, Text, StyleSheet } from 'react-native';
 const NavHeader = ({ onNotificationPress }) => {
     return (
         <View style={styles.header}>
-            {/* Logo on the left */}
             <Image
-                source={require('../assets/logo.png')} // Replace with your logo path
+                source={require('../assets/headerIcon.png')} // Adjust the path as needed
                 style={styles.logo}
             />
-
-            {/* Notification Button on the right */}
             <TouchableOpacity style={styles.notificationButton} onPress={onNotificationPress}>
                 <Text style={styles.notificationIcon}>🔔</Text>
             </TouchableOpacity>
@@ -29,16 +26,16 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#ddd',
     },
-    logo: {
-        width: 100,
-        height: 40,
-        resizeMode: 'contain',
-    },
     notificationButton: {
         padding: 10,
     },
     notificationIcon: {
         fontSize: 20,
+    },
+    logo: {
+        width: 100, // Set appropriate width
+        height: 40, // Set appropriate height
+        resizeMode: 'contain', // Ensures proper scaling
     },
 });
 

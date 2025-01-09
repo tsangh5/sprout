@@ -16,7 +16,7 @@ import ProfilePage from './pages/profilePage'
 import ChatsPage from './pages/chatsPage'
 import NavHeader from './components/NavHeader'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-
+import SproutIcon from './assets/sproutIcon.svg';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -61,11 +61,8 @@ function AppTabs() {
   return (
       <Tab.Navigator
           screenOptions={{
-              tabBarStyle: { backgroundColor: '#fff' },
+              tabBarStyle: { backgroundColor: '#ffff' },
               headerShown: false,
-              header: ({ navigation, route, options }) => {
-                  return <MyHeader title={title} style={options.headerStyle} />;
-              };
           }}
       >
         <Tab.Screen name="swipePage" component={SwipePage} />
@@ -84,9 +81,9 @@ function AppStack() {
             name="Main"
             component={AppTabs}
             options={{
-              headerTitle: () => (
+              header: () => (
                   <View style={styles.header}>
-                    <Image source={require('./assets/logo.js')} style={styles.logo} />
+                    <SproutIcon styles={styles.icon}/>
                     <TouchableOpacity style={styles.notificationButton}>
                       <Text style={styles.notificationText}>🔔</Text>
                     </TouchableOpacity>
@@ -119,16 +116,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 60,
+    height: 100,
     paddingHorizontal: 15,
     backgroundColor: '#f5f5f5',
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
+
   },
-  logo: {
-    width: 100,
+  icon: {
+    borderTop: 30,
+    width: 120,
     height: 40,
     resizeMode: 'contain',
+    borderWidth: 0,
   },
   notificationButton: {
     padding: 10,
