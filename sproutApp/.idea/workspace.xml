@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f6fda3a7-8017-482e-96af-d68f3b795ce3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/headerIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sproutIcon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/chatsTabIcon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/exploreTabIcon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/matchesTabIcon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/notifIcon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/profileTabIcon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/swipeTabIcon.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/logo.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Logo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sproutIcon.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/NavHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/metro.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Logo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sproutIcon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/sproutIcon.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +85,7 @@
       <workItem from="1735534871165" duration="1000" />
       <workItem from="1736203375172" duration="4533000" />
       <workItem from="1736272296958" duration="1681000" />
-      <workItem from="1736397889717" duration="3180000" />
+      <workItem from="1736397889717" duration="11501000" />
     </task>
     <servers />
   </component>

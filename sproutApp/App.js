@@ -17,6 +17,12 @@ import ChatsPage from './pages/chatsPage'
 import NavHeader from './components/NavHeader'
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import SproutIcon from './assets/sproutIcon.svg';
+import NotifIcon from './assets/notifIcon.svg';
+import SwipeIcon from './assets/swipeTabIcon.svg'
+import MatchesIcon from './assets/matchesTabIcon.svg'
+import ChatsIcon from './assets/chatsTabIcon.svg'
+import ProfileIcon from './assets/profileTabIcon.svg'
+import ExploreIcon from './assets/exploreTabIcon.svg'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,21 +64,67 @@ function AuthStack() {
 }
 
 function AppTabs() {
-  return (
-      <Tab.Navigator
-          screenOptions={{
-              tabBarStyle: { backgroundColor: '#ffff' },
-              headerShown: false,
-          }}
-      >
-        <Tab.Screen name="swipePage" component={SwipePage} />
-        <Tab.Screen name="explorePage" component={ExplorePage} />
-        <Tab.Screen name="matchesPage" component={MatchesPage} />
-        <Tab.Screen name="chatsPage" component={ChatsPage} />
-        <Tab.Screen name="profilePage" component={ProfilePage} />
-      </Tab.Navigator>
-  );
+    return (
+        <Tab.Navigator
+            screenOptions={{
+                tabBarStyle: {
+                    backgroundColor: 'white',
+                    height: 60,
+                },
+                tabBarShowLabel: false,
+                tabBarActiveTintColor: '#4CAF50', // Active icon color
+                tabBarInactiveTintColor: 'white', // Inactive icon color
+            }}
+        >
+            <Tab.Screen
+                name="swipePage"
+                component={SwipePage}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <SwipeIcon width={30} height={30} stroke={color} marginTop={20} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="explorePage"
+                component={ExplorePage}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <ExploreIcon width={30} height={30} marginTop={20} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="matchesPage"
+                component={MatchesPage}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <MatchesIcon width={30} height={30} marginTop={20} />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="chatsPage"
+                component={ChatsPage}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <ChatsIcon width={30} height={30} marginTop={20}/>
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="profilePage"
+                component={ProfilePage}
+                options={{
+                    tabBarIcon: ({ color, size }) => (
+                        <ProfileIcon width={30} height={30} marginTop={20}/>
+                    ),
+                }}
+            />
+        </Tab.Navigator>
+    );
 }
+
 
 function AppStack() {
   return (
@@ -85,7 +137,7 @@ function AppStack() {
                   <View style={styles.header}>
                     <SproutIcon styles={styles.icon}/>
                     <TouchableOpacity style={styles.notificationButton}>
-                      <Text style={styles.notificationText}>🔔</Text>
+                      <NotifIcon/>
                     </TouchableOpacity>
                   </View>
               ),
@@ -107,33 +159,44 @@ export default function App() {
   );
 }
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: 100,
-    paddingHorizontal: 15,
-    backgroundColor: '#f5f5f5',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-
-  },
-  icon: {
-    borderTop: 30,
-    width: 120,
-    height: 40,
-    resizeMode: 'contain',
-    borderWidth: 0,
-  },
-  notificationButton: {
-    padding: 10,
-  },
-  notificationText: {
-    fontSize: 20,
-  },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center', // Ensures children are vertically centered
+        height: 75,
+        paddingHorizontal: 15,
+        marginTop: 20,
+        backgroundColor: '#f5f5f5',
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+    },
+    icon: {
+        width: 40,
+        height: 40, // Adjust to fit your design
+        resizeMode: 'contain', // Ensure the SVG maintains its aspect ratio
+    },
+    notificationButton: {
+        padding: 10,
+    },
+    notificationText: {
+        fontSize: 20,
+    },
+    logo: {
+        display: 'inline-block',
+    },
+    tabIconContainer: {
+        justifyContent: 'center', // Centers icon vertically
+        alignItems: 'center', // Centers icon horizontally
+        flex: 1, // Ensures the container takes full space of the tab
+    },
+    tabIcon: {
+        width: 30,
+        height: 30, // Consistent sizing for all icons
+    },
+    tabBarStyle: {
+        backgroundColor: 'white',
+        height: 60,
+        justifyContent: 'center',
+    },
 });
+
