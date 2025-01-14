@@ -149,6 +149,7 @@ function AppStack() {
 
 export default function App() {
 const [isAuthenticated, setIsAuthenticated] = useState(false);
+setIsAuthenticated(true)
   return (
       <GestureHandlerRootView style={{ flex: 1 }}>
         <NavigationContainer>
