@@ -81,7 +81,7 @@ function AppTabs() {
                 component={SwipePage}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <SwipeIcon width={30} height={30} stroke={color} marginTop={20} />
+                        <SwipeIcon width={30} height={30} stroke={color} style = {{marginTop: 20}} />
                     ),
                 }}
             />
@@ -90,7 +90,7 @@ function AppTabs() {
                 component={ExplorePage}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <ExploreIcon width={30} height={30} marginTop={20} />
+                        <ExploreIcon width={30} height={30} style = {{marginTop: 20}} />
                     ),
                 }}
             />
@@ -99,7 +99,7 @@ function AppTabs() {
                 component={MatchesPage}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <MatchesIcon width={30} height={30} marginTop={20} />
+                        <MatchesIcon width={30} height={30} style = {{marginTop: 20}} />
                     ),
                 }}
             />
@@ -108,7 +108,7 @@ function AppTabs() {
                 component={ChatsPage}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <ChatsIcon width={30} height={30} marginTop={20}/>
+                        <ChatsIcon width={30} height={30} style = {{marginTop: 20}}/>
                     ),
                 }}
             />
@@ -117,7 +117,7 @@ function AppTabs() {
                 component={ProfilePage}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <ProfileIcon width={30} height={30} marginTop={20}/>
+                        <ProfileIcon width={30} height={30} style = {{marginTop: 20}}/>
                     ),
                 }}
             />
@@ -148,8 +148,7 @@ function AppStack() {
 }
 
 export default function App() {
-const [isAuthenticated, setIsAuthenticated] = useState(false);
-setIsAuthenticated(true)
+const [isAuthenticated, setIsAuthenticated] = useState(true);
   return (
       <GestureHandlerRootView style={{ flex: 1 }}>
         <NavigationContainer>
