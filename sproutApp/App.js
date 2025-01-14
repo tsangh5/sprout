@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { GestureHandlerRootView } from 'react-native-gesture-handler'; // Import GestureHandlerRootView
@@ -148,8 +148,7 @@ function AppStack() {
 }
 
 export default function App() {
-  const isAuthenticated = true; // Replace with logic to check if the user is signed in
-
+const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
       <GestureHandlerRootView style={{ flex: 1 }}>
         <NavigationContainer>
