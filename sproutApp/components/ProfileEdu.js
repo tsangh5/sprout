@@ -5,34 +5,39 @@ import { StyleSheet } from "react-native";
 
 const ProfileEdu = ({ educationLevel, setEducationLevel, major, setMajor }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Your Education Information</Text>
-      <Text style={styles.label}>Education Level</Text>
-      <Picker
-        selectedValue={educationLevel}
-        onValueChange={(itemValue) => setEducationLevel(itemValue)}
-        style={styles.picker}
-      >
-        <Picker.Item label="Select an option" value="" />
-        <Picker.Item label="High School" value="highschool" />
-        <Picker.Item label="Undergraduate" value="undergraduate" />
-        <Picker.Item label="Postgraduate" value="postgraduate" />
-      </Picker>
+      <View style={styles.container}>
+        <Text style={styles.title}>Your Education Information</Text>
+        <Text style={styles.label}>Education Level</Text>
+        <View style={styles.picker}>
+          <Picker
+              style={styles.pickerStyle}
+              selectedValue={educationLevel}
+              onValueChange={(itemValue) => setEducationLevel(itemValue)}
+          >
+            <Picker.Item style={[styles.pickerItem, { fontSize: 15 }]} label="Select an option" value="" />
+            <Picker.Item style={[styles.pickerItem, { fontSize: 15 }]} label="High School" value="highschool" />
+            <Picker.Item style={[styles.pickerItem, { fontSize: 15 }]} label="Undergraduate" value="undergraduate" />
+            <Picker.Item style={[styles.pickerItem, { fontSize: 15 }]} label="Postgraduate" value="postgraduate" />
+          </Picker>
+        </View>
 
-      <Text style={styles.label}>Major</Text>
-      <TextInput
-        placeholder="Enter your major"
-        value={major}
-        onChangeText={setMajor}
-        style={styles.textInput}
-      />
-    </View>
+        <Text style={styles.label}>Major</Text>
+        <TextInput
+            placeholder="Enter your major"
+            value={major}
+            onChangeText={setMajor}
+            style={styles.textInput}
+            placeHolderTextColor="black"
+        />
+      </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
+    display: "flex",
+    width: "100%",
+    padding: 20,
   },
   title: {
     fontSize: 20,
@@ -44,18 +49,29 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   picker: {
-    height: 50,
     width: 250,
     marginBottom: 10,
+    borderColor: "#14AE5C",
+    borderWidth: 2,
+    borderRadius: 5,
+    height: 40,
+    justifyContent: "center",
+  },
+  pickerItem: {
+    borderColor: "#14AE5C",
+    borderWidth: 2,
   },
   textInput: {
     height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
+    borderColor: "#14AE5C",
+    borderWidth: 2,
     borderRadius: 5,
     width: 250,
-    paddingHorizontal: 10,
-    marginBottom: 10,
+    paddingHorizontal: 18,
+    paddingVertical: 8,
+    justifyContent: "center",
+    color: "black",
+    fontSize: 15, // Ensure this is the same as Picker.Item font size
   },
 });
 

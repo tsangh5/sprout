@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 const LandingScreen = () => {
+  const navigation = useNavigation(); // Get navigation instance
   const [activeIndex, setActiveIndex] = useState(0);
   const screenWidth = Dimensions.get('window').width;
 
@@ -70,10 +72,10 @@ const LandingScreen = () => {
 
       {/* Buttons */}
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ProfileSetup')}>
           <Text style={styles.buttonText}>Continue with email</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.outlineButton]}>
+        <TouchableOpacity style={[styles.button, styles.outlineButton]} onPress={() => navigation.navigate('ProfileSetup')}>
           <Text style={styles.outlineButtonText}>Continue with mobile</Text>
         </TouchableOpacity>
         <Text style={styles.termsText}>

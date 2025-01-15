@@ -20,6 +20,7 @@ const ProfileHobbies = ({ hobbies, setHobbies, clubs, setClubs }) => {
         value={clubs}
         onChangeText={setClubs}
         style={styles.textInput}
+        placeHolderTextColor="#000000"
       />
     </View>
   );
@@ -27,7 +28,9 @@ const ProfileHobbies = ({ hobbies, setHobbies, clubs, setClubs }) => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
+      display: "flex",
+      width: "100%",
+      padding: 20,
   },
   title: {
     fontSize: 20,
@@ -39,13 +42,16 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   textInput: {
-    height: 40,
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 5,
-    width: 250,
-    paddingHorizontal: 10,
-    marginBottom: 10,
+      height: 40,
+      borderColor: "#14AE5C",
+      borderWidth: 2,
+      borderRadius: 5,
+      width: 250,
+      paddingHorizontal: 18,
+      paddingVertical: 8,
+      justifyContent: "center",
+      color: "black",
+      fontSize: 15, // Ensure this is the same as Picker.Item font size
   },
 });
 
